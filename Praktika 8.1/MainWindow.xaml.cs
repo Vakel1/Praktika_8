@@ -85,11 +85,11 @@ namespace TaskManager
             }
         }
 
+       
 
         private void FilterTasks(object sender, RoutedEventArgs e)
         {
-            string filterStatus = filterTextBox.Text.ToLower();
-
+            string filterText = filterTextBox.Text.ToLower();
             ListCollectionView view = (ListCollectionView)CollectionViewSource.GetDefaultView(taskListView.ItemsSource);
 
             if (view != null)
@@ -98,7 +98,7 @@ namespace TaskManager
                 {
                     if (item is Task task)
                     {
-                        return task.Status.ToLower() == filterStatus;
+                        return task.Title.ToLower().Contains(filterText);
                     }
                     return false;
                 };
